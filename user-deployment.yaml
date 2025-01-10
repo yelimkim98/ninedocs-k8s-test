@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: user-deployment
+  labels:
+    app: user-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: user-container
+  template:
+    metadata:
+      labels:
+        app: user-container
+    spec:
+      containers:
+      - name: user-container
+        image: gunwoda/ninedocs-user-server:d8f7915
+        imagePullPolicy: Always
